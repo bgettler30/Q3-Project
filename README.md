@@ -26,7 +26,7 @@ You should see quiz_bowl.db in your project directory.
 Each table is created for a course, and the structure prevents duplicate questions.
 
 2. Adding Questions
-Use manage_database.py to add, remove, or fetch questions from the database.
+Use addtoDB.py to add, remove, or fetch questions from the database.
 
 Adding Questions:
 
