@@ -5,8 +5,18 @@ import random
 
 DB_NAME = "quiz_bowl.db"
 
-
-
+class Question:
+    def __init__(self, question_text, choice_a, choice_b, choice_c, choice_d, correct_answer, feedback):
+        self.question_text = question_text
+        self.choices = {
+            'A': choice_a,
+            'B': choice_b,
+            'C': choice_c,
+            'D': choice_d
+        }
+        self.correct_answer = correct_answer
+        self.feedback = feedback
+        
 def get_categories():
     return [
         "Intermediate_Financial_Management",
@@ -22,6 +32,9 @@ def fetch_questions(category):
     cursor.execute(f"SELECT question_text, choice_a, choice_b, choice_c, choice_d, correct_answer, feedback FROM {category}")
     questions = cursor.fetchall()
     connection.close()
+    return questions
+
+    questions = [Question(*data) for data in questions_data]
     return questions
 
 class QuizApp:
